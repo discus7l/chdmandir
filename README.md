@@ -5,3 +5,5 @@ The script will create a .chd file in the root folder.
 
 If a multi-disc game is found, the script will create the .chd file in a .hidden folder.
 An .m3u file will also be created in the root folder.
+
+Don't forget to place chdman.exe in the same directory as chdmandir.exe.
