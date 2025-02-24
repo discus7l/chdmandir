@@ -2,8 +2,8 @@ import os
 import subprocess
 
 # List all directories in the given path
-# path = os.getcwd()
-path = "C:/Users/yk/Desktop/temp/GAME/ROMs/saturn"
+# path = "C:/Users/yk/Desktop/temp/GAME/ROMs/saturn"
+path = os.getcwd()
 
 # Create .hidden dir for multi-disc games
 if not os.path.exists(f'{path}/.hidden'):
