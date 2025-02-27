@@ -30,8 +30,8 @@ for rootI in rootDir:
             if (os.path.splitext(fileNames)[1].casefold() == '.cue') or (os.path.splitext(fileNames)[1].casefold() == '.gdi'):
                 noExtFileName = os.path.splitext(fileNames)[0]
                 multiDiscFileList.append(f'.hidden/{noExtFileName}.chd')
-                iFile = f"{path}/{rootI}/{fileNames}"
-                oFile = f"{path}/.hidden/{noExtFileName}.chd"
+                iFile = f"{path}\{rootI}\{fileNames}"
+                oFile = f"{path}\.hidden\{noExtFileName}.chd"
                 subprocess.run(['chdman.exe', 'createcd', '-i', iFile, '-o', oFile])
 
         with open(f'{path}/{rootI}.m3u', 'w') as f:
@@ -42,8 +42,8 @@ for rootI in rootDir:
         for fileNames in childDir:
             if (os.path.splitext(fileNames)[1].casefold() == '.cue') or (os.path.splitext(fileNames)[1].casefold() == '.gdi'):
                 noExtFileName = os.path.splitext(fileNames)[0]
-                iFile = f"{path}/{rootI}/{fileNames}"
-                oFile = f"{path}/{noExtFileName}.chd"
+                iFile = f"{path}\{rootI}\{fileNames}"
+                oFile = f"{path}\{noExtFileName}.chd"
                 subprocess.run(['chdman.exe', 'createcd', '-i', iFile, '-o', oFile])
 
 input('Press any key to exit.')
