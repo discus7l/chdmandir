@@ -16,7 +16,7 @@ rootDir = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
 # Get file names from child directory
 # Run chdman if cue file is found
 for rootI in rootDir:
-    childDir = os.listdir(f'{path}\{rootI}')
+    childDir = os.listdir(f'{path}/{rootI}')
 
     cueCounter = 0
     multiDiscFileList = []
@@ -28,13 +28,13 @@ for rootI in rootDir:
     if cueCounter > 2:
         for fileNames in childDir:
             if (os.path.splitext(fileNames)[1].casefold() == '.cue') or (os.path.splitext(fileNames)[1].casefold() == '.gdi'):
-                multiDiscFileList.append(f'.hidden\{fileNames}')
                 noExtFileName = os.path.splitext(fileNames)[0]
-                iFile = f"{path}\{rootI}\{fileNames}"
-                oFile = f"{path}\.hidden\{noExtFileName}.chd"
+                multiDiscFileList.append(f'.hidden/{noExtFileName}.chd')
+                iFile = f"{path}/{rootI}/{fileNames}"
+                oFile = f"{path}/.hidden/{noExtFileName}.chd"
                 subprocess.run(['chdman.exe', 'createcd', '-i', iFile, '-o', oFile])
 
-        with open(f'{path}\{rootI}.m3u', 'w') as f:
+        with open(f'{path}/{rootI}.m3u', 'w') as f:
             for disc in multiDiscFileList:
                 f.write(f'{disc}\n')
 
@@ -42,8 +42,8 @@ for rootI in rootDir:
         for fileNames in childDir:
             if (os.path.splitext(fileNames)[1].casefold() == '.cue') or (os.path.splitext(fileNames)[1].casefold() == '.gdi'):
                 noExtFileName = os.path.splitext(fileNames)[0]
-                iFile = f"{path}\{rootI}\{fileNames}"
-                oFile = f"{path}\{noExtFileName}.chd"
+                iFile = f"{path}/{rootI}/{fileNames}"
+                oFile = f"{path}/{noExtFileName}.chd"
                 subprocess.run(['chdman.exe', 'createcd', '-i', iFile, '-o', oFile])
 
-input()
+input('Press any key to exit.')
