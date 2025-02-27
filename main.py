@@ -25,7 +25,7 @@ for rootI in rootDir:
             cueCounter += 1
 
     # Write m3u file and place chd in .hidden dir if multidisc detected
-    if cueCounter > 2:
+    if cueCounter > 1:
         for fileNames in childDir:
             if (os.path.splitext(fileNames)[1].casefold() == '.cue') or (os.path.splitext(fileNames)[1].casefold() == '.gdi'):
                 noExtFileName = os.path.splitext(fileNames)[0]
